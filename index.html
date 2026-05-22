@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>IF Barber | Modern Prestige Grooming</title>
+    
+    <!-- 1. Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- 2. Tailwind Configuration -->
+    <script src="js/tailwind.config.js"></script>
+
+    <!-- 3. Application Logic & Interactions -->
+    <script src="js/app.js"></script>
+    
+    <!-- 3. Google Fonts & Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- 4. Load Custom CSS Stylesheet (Overrides & Custom Components) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-background text-on-surface antialiased">
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-40 bg-surface/70 dark:bg-surface/70 backdrop-blur-md border-b border-white/10 shadow-sm navbar-transition">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+            <!-- Brand -->
+            <a href="#" class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tight cursor-pointer">
+                IF Barber
+            </a>
+            <!-- Navigation Links (Desktop) -->
+            <div class="hidden md:flex gap-gutter items-center">
+                <a class="nav-link font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer active:scale-95 transition-transform hover:text-gold-hover transition-all duration-300" href="#services">Services</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform hover:text-gold-hover transition-all duration-300" href="#barbers">Barbers</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform hover:text-gold-hover transition-all duration-300" href="#queue">Queue</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform hover:text-gold-hover transition-all duration-300" href="#admin">Admin</a>
+            </div>
+            <!-- Primary Action -->
+            <button class="btn-book-trigger bg-primary-container text-on-primary font-label-md text-label-md px-6 py-3 rounded-DEFAULT hover:bg-gold-hover transition-colors cursor-pointer active:scale-95">
+                Book Now
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- 1. Hero Section -->
+        <section class="relative min-h-[921px] flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img alt="A dark, moody barbershop interior. Vintage leather barber chairs sit on distressed wood floors. Warm amber lighting reflects off dark mahogany stations and mirrored walls. The atmosphere is luxurious, exclusive, and undeniably masculine, perfectly aligning with a high-end modern prestige grooming experience in deep blacks and golds." class="w-full h-full object-cover object-center opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4KAWEDH0EtMj0FEX1LjChnkvQCxCfFrIOernYSCOPmEv_LmdsYiVy-ZCeJtkuxrvNUSwzuE90CbbnSy3BFredme9q1gUHGBkmKYdqekzmeaYBpBj8CF_OzZHjptxrLlfb_AUZ5baI-JlT-NXcvH3gf0mMywc2WrWtxfaRad_9T_MB2GXjVyojBb6rpdMfA58t1KQjkBAqzLADcUhMDqXVm0PTZL9rdS1B-a9pRcxEuGosV9vF6ZjLox52jWgzt5hXONScNRZkAn_R"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+            </div>
+            <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col items-center gap-stack-lg">
+                <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface max-w-4xl">
+                    Elevate Your Style
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Premium Grooming Experience at IF Barber. Where traditional craftsmanship meets modern precision.
+                </p>
+                <button class="btn-book-trigger glass-panel text-primary font-label-md text-label-md px-8 py-4 rounded-DEFAULT border border-primary/50 hover:bg-primary hover:text-on-primary transition-all duration-300 mt-stack-md glow-accent">
+                    Book Appointment
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. Features -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-lg flex flex-col items-center text-center gap-stack-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">Certified Barbers</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Master craftsmen dedicated to perfecting your unique look with precision and care.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-lg flex flex-col items-center text-center gap-stack-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">Premium Products</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">We exclusively use top-tier, luxury grooming products for optimal hair and skin health.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-lg flex flex-col items-center text-center gap-stack-sm hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chair</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">Relaxing Atmosphere</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Unwind in our exclusive, calm environment designed for your ultimate comfort and relaxation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Barbers (Bento Grid Style) -->
+        <section id="barbers" class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-mt-24">
+            <div class="mb-stack-lg text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-stack-md">
+                <div>
+                    <h2 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-stack-sm">The Masters</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Meet our highly curated team of grooming specialists.</p>
+                </div>
+                <a href="#barbers" class="text-primary hover:text-gold-hover font-label-md text-label-md flex items-center gap-2 transition-colors">
+                    View All Barbers <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+                <!-- Barber 1 (Large) -->
+                <div class="md:col-span-2 md:row-span-2 glass-panel rounded-lg overflow-hidden group relative min-h-[400px]">
+                    <img alt="A sharply dressed master barber with detailed tattoos on his arms, carefully fading a client's hair." class="absolute inset-0 w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqYfR_b-dXBZ52DHLpYxwQLamToj0uHO03hIiCcHsnRoVkEsZ3nHZxzqoPRACHq7lVANKvjI-ST29bDj-sKVvD-sg_l7ZKASGTNAvy9uAjFIweuXPUwph5j8ZHp6kl-Ws3LtsffrhOeAB4myrtH0Nc9KbL80bdPCFxDQubVATBXXBnHxPURu_CTL1RQl8dRL44m4RF-WQD_EIoqE5uF8Q2LKyA8qiXxt0-GXJf_eEfrwo6N4V1KvAhJE0rRkLUdOXzrfaPD6aujr6K"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-headline-xl text-headline-xl text-on-surface mb-2">Marcus Vance</h3>
+                                <div class="flex gap-2 mb-4">
+                                    <span class="bg-surface-variant/80 text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm">Master Fade</span>
+                                    <span class="bg-surface-variant/80 text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm">Scissor Work</span>
+                                </div>
+                            </div>
+                            <button data-barber="1" class="btn-book-trigger w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-gold-hover transition-colors">
+                                <span class="material-symbols-outlined">event</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Barber 2 -->
+                <div class="md:col-span-2 glass-panel rounded-lg overflow-hidden group relative min-h-[250px]">
+                    <img alt="A confident, stylish barber expertly shaping a thick beard with a straight razor." class="absolute inset-0 w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCmZ_qTNdFzTty2NbdB1470GJ21YzHHlyaxEI2XHyCKQmcugmWJth-iJnKT6vXwOhPC9t6kDqLS_Pjs5MIYo4T6-wpHykm-EwG1nDWDnkBhCwXDCb0T8-GXK5iS_qT6k8ppL4v5f3pTCBp65gcO8JcbkwaWBdpXblrgVmox9M9FQTREp_rEhuNUMC3Pb9uMndP_qq9HFvzIzLcSB36lO0Wwqg4741IJT_9guiRhRp3MbxfvHTGQbOnjNUbINLzAo_0yHmKMJHJCYr"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full flex justify-between items-end">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Julian Thorne</h3>
+                            <span class="bg-surface-variant/80 text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm inline-block">Beard Specialist</span>
+                        </div>
+                        <button data-barber="2" class="btn-book-trigger w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-gold-hover transition-colors">
+                            <span class="material-symbols-outlined text-sm">event</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Barber 3 -->
+                <div class="md:col-span-2 glass-panel rounded-lg overflow-hidden group relative min-h-[250px]">
+                    <img alt="A female master barber in a high-end salon, carefully styling a gentleman's hair." class="absolute inset-0 w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfaaGqNLfLnkm7EuoRXNcfHHC7iJl2Cezaoge5eBrEjxLBI-D9aBgHnWG2PrGZXRdKMMdqvHBxhDryahBCXSjcOBPYa9A6Cc1aCH3f5QXsNzFtbRVnovvYSLhwg3ad2EdtlaHMzTSRjJCQDHG82XK12zxEz__cROZH-JPObTEyK17XxuYhwct6oNtQ9d-gAa5GH1N1DxEqbm0sDl9Sd2p4QcjGHmCRNrN-xt4B2jwWxvn2iuTP___Z_i3tXMTaGD2WvvMstMtxEX6U"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full flex justify-between items-end">
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Elena Rostova</h3>
+                            <span class="bg-surface-variant/80 text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm inline-block">Classic Styling</span>
+                        </div>
+                        <button data-barber="3" class="btn-book-trigger w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-gold-hover transition-colors">
+                            <span class="material-symbols-outlined text-sm">event</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Services Overview -->
+        <section id="services" class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-mt-24">
+            <div class="text-center mb-stack-lg">
+                <h2 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-stack-sm">Signature Services</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Impeccable grooming tailored to your exact specifications.</p>
+            </div>
+            
+            <div class="glass-panel rounded-xl p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="flex flex-col gap-6">
+                    <!-- Service Item -->
+                    <div class="flex items-center justify-between border-b border-white/5 pb-6 group cursor-pointer hover:bg-surface-variant/20 p-4 rounded-lg transition-colors -mx-4 btn-book-trigger">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Classic Cut</h4>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">Precision haircut, wash, style, and a hot towel finish.</p>
+                        </div>
+                        <div class="font-headline-md text-headline-md text-primary">$65</div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="flex items-center justify-between border-b border-white/5 pb-6 group cursor-pointer hover:bg-surface-variant/20 p-4 rounded-lg transition-colors -mx-4 btn-book-trigger">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Luxury Hot Shave</h4>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">Traditional straight razor shave with premium essential oils and hot towels.</p>
+                        </div>
+                        <div class="font-headline-md text-headline-md text-primary">$55</div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="flex items-center justify-between pb-2 group cursor-pointer hover:bg-surface-variant/20 p-4 rounded-lg transition-colors -mx-4 btn-book-trigger">
+                        <div>
+                            <h4 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Executive Package</h4>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">Complete haircut and luxury shave experience with scalp massage.</p>
+                        </div>
+                        <div class="font-headline-md text-headline-md text-primary">$110</div>
+                    </div>
+                </div>
+                
+                <div class="mt-stack-lg text-center">
+                    <button class="btn-book-trigger text-primary hover:text-gold-hover font-label-md text-label-md flex items-center gap-2 transition-colors mx-auto">
+                        View Full Menu <span class="material-symbols-outlined">restaurant_menu</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Real-time Queue Status (Interactive Dynamic Panel) -->
+        <section id="queue" class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto scroll-mt-24">
+            <div class="text-center mb-stack-lg">
+                <h2 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-stack-sm">
+                    Real-time Queue Status
+                </h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+                    Pantau status antrean hari ini secara langsung. Booking slot Anda sekarang untuk masuk dalam daftar tunggu.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-4xl mx-auto">
+                <!-- Current Serving Panel -->
+                <div class="glass-panel rounded-xl p-6 md:p-8 flex flex-col gap-4">
+                    <h3 class="font-headline-md text-lg font-bold text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">chair</span>
+                        Sedang Dicukur (Current Serving)
+                    </h3>
+                    <div id="currentServingQueue" class="flex flex-col gap-3">
+                        <!-- Populated by App JS -->
+                    </div>
+                </div>
+                
+                <!-- Waiting Queue Panel -->
+                <div class="glass-panel rounded-xl p-6 md:p-8 flex flex-col gap-4">
+                    <h3 class="font-headline-md text-lg font-bold text-secondary-fixed flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary-fixed font-bold">group</span>
+                        Daftar Tunggu (Waiting Queue)
+                    </h3>
+                    <div id="waitingListQueue" class="flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
+                        <!-- Populated by App JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between items-start px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-stack-lg">
+            <div>
+                <div class="font-headline-md text-headline-md text-primary mb-stack-sm">
+                    IF Barber
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                    © 2024 IF Barber. Modern Prestige Grooming. All rights reserved.
+                </p>
+            </div>
+            <div class="flex gap-gutter flex-wrap text-sm">
+                <a class="font-label-sm text-label-sm text-muted-gray hover:text-primary transition-colors hover:opacity-80" href="#services">Services</a>
+                <a class="font-label-sm text-label-sm text-muted-gray hover:text-primary transition-colors hover:opacity-80" href="#barbers">Barbers</a>
+                <a class="font-label-sm text-label-sm text-muted-gray hover:text-primary transition-colors hover:opacity-80" href="#queue">Queue</a>
+                <a class="font-label-sm text-label-sm text-muted-gray hover:text-primary transition-colors hover:opacity-80" href="#admin">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Window -->
+    <div id="chatWindow" class="fixed bottom-24 right-6 z-50 chat-window glass-panel rounded-xl flex flex-col shadow-2xl glow-accent hidden">
+        <!-- Chat Header -->
+        <div class="flex justify-between items-center bg-surface-container-high border-b border-white/10 px-5 py-4 rounded-t-xl">
+            <div class="flex items-center gap-2.5">
+                <div class="relative w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-xl">smart_toy</span>
+                    <!-- Active Indicator -->
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border border-[#111415]"></span>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-on-surface font-headline-md">IF Barber AI</h4>
+                    <p class="text-[10px] text-green-500 font-medium">Online Assistant</p>
+                </div>
+            </div>
+            <button id="closeChatBtn" class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-5 chat-messages-container flex flex-col gap-4">
+            <!-- Initial Message will remain here -->
+            <div class="flex justify-start mb-2">
+                <div class="bg-surface-container-high text-on-surface rounded-2xl rounded-bl-none max-w-[85%] px-4 py-2.5 text-sm shadow-md leading-relaxed">
+                    Halo! Saya adalah AI Assistant IF Barber. 🤖✨
+                    <br><br>
+                    Ada yang bisa saya bantu? Anda dapat bertanya tentang:
+                    <br>
+                    • 💰 <strong>Harga & Layanan</strong>
+                    <br>
+                    • 💈 <strong>Profil Barber Master kami</strong>
+                    <br>
+                    • 📅 <strong>Jam Operasional & Alamat</strong>
+                    <br>
+                    • 🔍 <strong>Cek Status Antrean</strong> (Ketikkan kode booking Anda, misal: <code>BFK-103</code>)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-white/5 bg-surface-container-low/50 rounded-b-xl flex gap-2.5">
+            <input type="text" id="chatInput" placeholder="Ketik pesan Anda..." class="flex-1 bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-2 text-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary/50 transition-colors" />
+            <button id="chatSendBtn" class="bg-primary text-on-primary w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gold-hover active:scale-95 transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg">send</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat FAB -->
+    <div id="chatFabBtnContainer" class="fixed bottom-6 right-6 z-50 flex items-end justify-end flex-col group">
+        <!-- Optional Tooltip -->
+        <div class="bg-surface-container-high text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-lg mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0 border border-white/10 whitespace-nowrap shadow-lg">
+            Tanya Asisten AI kami
+        </div>
+        <!-- FAB button -->
+        <button id="chatFabBtn" class="w-16 h-16 rounded-full glass-panel flex items-center justify-center glow-accent hover:scale-105 transition-transform duration-300 relative group overflow-hidden cursor-pointer">
+            <!-- Shimmer effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+            <span class="material-symbols-outlined text-primary text-3xl z-10">smart_toy</span>
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden modal-overlay">
+        <div class="w-full max-w-lg glass-panel rounded-xl overflow-hidden shadow-2xl modal-content-anim glow-accent">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-surface-container-high">
+                <h3 class="font-headline-md text-lg font-bold text-on-surface">Book Your Slot</h3>
+                <button id="closeModalBtn" class="text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <!-- Booking Form -->
+            <form id="bookingForm" class="p-6 flex flex-col gap-4">
+                <!-- Name -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="customer_name" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Nama Lengkap</label>
+                    <input type="text" id="customer_name" required placeholder="Masukkan nama lengkap Anda" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-2.5 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary/50 transition-colors" />
+                </div>
+                
+                <!-- Phone -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="customer_phone" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Nomor WhatsApp</label>
+                    <input type="tel" id="customer_phone" required placeholder="Contoh: 0812XXXXXXXX" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-4 py-2.5 text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary/50 transition-colors" />
+                </div>
+                
+                <!-- Service & Barber -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label for="service_id" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Pilih Layanan</label>
+                        <select id="service_id" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2.5 text-on-surface focus:outline-none focus:border-primary/50 transition-colors">
+                            <option value="1">The Classic Cut - $65</option>
+                            <option value="2">Luxury Hot Shave - $55</option>
+                            <option value="3">The Executive Package - $110</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex flex-col gap-1.5">
+                        <label for="barber_id" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Pilih Barber</label>
+                        <select id="barber_id" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2.5 text-on-surface focus:outline-none focus:border-primary/50 transition-colors">
+                            <option value="1">Marcus Vance</option>
+                            <option value="2">Julian Thorne</option>
+                            <option value="3">Elena Rostova</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Date & Time -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label for="booking_date" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Tanggal</label>
+                        <input type="date" id="booking_date" required class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2.5 text-on-surface focus:outline-none focus:border-primary/50 transition-colors" />
+                    </div>
+                    
+                    <div class="flex flex-col gap-1.5">
+                        <label for="booking_time" class="font-label-md text-xs text-on-surface-variant uppercase tracking-wider">Waktu / Jam</label>
+                        <select id="booking_time" required class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2.5 text-on-surface focus:outline-none focus:border-primary/50 transition-colors">
+                            <option value="10:00">10:00 WIB</option>
+                            <option value="11:00">11:00 WIB</option>
+                            <option value="12:00">12:00 WIB</option>
+                            <option value="13:00">13:00 WIB</option>
+                            <option value="14:00">14:00 WIB</option>
+                            <option value="15:00">15:00 WIB</option>
+                            <option value="16:00">16:00 WIB</option>
+                            <option value="17:00">17:00 WIB</option>
+                            <option value="18:00">18:00 WIB</option>
+                            <option value="19:00">19:00 WIB</option>
+                            <option value="20:00">20:00 WIB</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Action Button -->
+                <button type="submit" class="mt-2 w-full bg-primary-container text-on-primary font-bold text-label-md py-3 rounded-lg hover:bg-gold-hover transition-colors active:scale-95 cursor-pointer">
+                    Confirm Booking
+                </button>
+            </form>
+            
+            <!-- Booking Success Screen -->
+            <div id="successResult" class="p-6 hidden text-center flex flex-col items-center gap-4">
+                <div class="w-16 h-16 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-500 mb-2">
+                    <span class="material-symbols-outlined text-4xl">check_circle</span>
+                </div>
+                <h4 class="font-headline-xl text-2xl font-bold text-on-surface">Booking Berhasil!</h4>
+                <p class="text-xs text-on-surface-variant max-w-sm">Tunjukkan nomor antrean dan kode booking Anda saat kedatangan.</p>
+                
+                <!-- Ticket Info -->
+                <div class="w-full bg-surface-container-high rounded-xl p-5 border border-white/5 text-left flex flex-col gap-2 mt-2">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-2">
+                        <span class="text-xs text-on-surface-variant font-medium">NOMOR ANTREAN</span>
+                        <span id="resQueueNumber" class="text-3xl font-black text-primary">#18</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-2 text-xs">
+                        <div>
+                            <span class="text-on-surface-variant block uppercase tracking-wider font-semibold text-[10px]">KODE BOOKING</span>
+                            <span id="resBookingCode" class="text-on-surface font-bold text-sm">BFK-ABCD</span>
+                        </div>
+                        <div>
+                            <span class="text-on-surface-variant block uppercase tracking-wider font-semibold text-[10px]">PELANGGAN</span>
+                            <span id="resCustomer" class="text-on-surface font-bold text-sm">Ronaldo</span>
+                        </div>
+                        <div>
+                            <span class="text-on-surface-variant block uppercase tracking-wider font-semibold text-[10px]">BARBER MASTER</span>
+                            <span id="resBarber" class="text-on-surface font-bold">Marcus Vance</span>
+                        </div>
+                        <div>
+                            <span class="text-on-surface-variant block uppercase tracking-wider font-semibold text-[10px]">LAYANAN</span>
+                            <span id="resService" class="text-on-surface font-bold">Classic Cut</span>
+                        </div>
+                        <div class="col-span-2 border-t border-white/5 pt-2 mt-1">
+                            <span class="text-on-surface-variant block uppercase tracking-wider font-semibold text-[10px]">JADWAL</span>
+                            <span id="resSchedule" class="text-on-surface font-bold">2026-05-22 @ 14:00 WIB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-[11px] text-primary/80 italic mt-2">
+                    Tips: Anda bisa mengecek status antrean secara real-time via Chatbot AI menggunakan Kode Booking Anda.
+                </p>
+                
+                <button onclick="closeSuccessPanel()" class="w-full bg-surface-container-highest border border-white/10 text-on-surface font-bold text-label-md py-3 rounded-lg hover:bg-surface-variant/80 transition-colors active:scale-95 cursor-pointer mt-2">
+                    Awesome, See You There!
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

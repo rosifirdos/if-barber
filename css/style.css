@@ -1,0 +1,116 @@
+/* ----------------------------------------------------
+   IF Barber - Custom CSS Stylesheet
+   Modern Prestige Grooming Aesthetics
+   ---------------------------------------------------- */
+
+/* Google Fonts & Icons are loaded in HTML head */
+
+/* Material Icons Helper */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background-color: rgba(15, 15, 18, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Premium Gold Glow Effect */
+.glow-accent {
+    box-shadow: 0px 0px 25px rgba(212, 175, 55, 0.15);
+}
+
+/* Shimmer Animation Keyframe */
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Custom Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0c0e10;
+}
+::-webkit-scrollbar-thumb {
+    background: #282a2c;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+
+/* Navbar Scroll Effect */
+.navbar-transition {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar-scrolled {
+    background-color: rgba(12, 14, 16, 0.9);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    height: 4.5rem; /* slightly thinner on scroll */
+}
+
+/* Booking Modal Custom Styles */
+.modal-overlay {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.modal-content-anim {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: scale(0.9) translateY(20px);
+}
+.modal-overlay:not(.hidden) .modal-content-anim {
+    transform: scale(1) translateY(0);
+}
+
+/* Chatbot UI Custom Styles */
+.chat-window {
+    width: 360px;
+    max-width: calc(100vw - 2rem);
+    height: 480px;
+    max-height: calc(100vh - 8rem);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, visibility 0.3s ease;
+    transform-origin: bottom right;
+}
+.chat-window.hidden {
+    transform: scale(0.7) translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Chat Messages Area Scroll styling */
+.chat-messages-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.chat-messages-container::-webkit-scrollbar {
+    width: 4px;
+}
+.chat-messages-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 2px;
+}

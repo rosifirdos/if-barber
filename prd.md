@@ -11,7 +11,7 @@ Dokumen ini menjelaskan persyaratan produk, spesifikasi teknis, arsitektur data,
 Industri barbershop berkembang pesat, namun manajemen antrean fisik sering kali menyebabkan waktu tunggu yang lama bagi pelanggan dan ketidakefisienan operasional bagi barbershop. Banyak barbershop masih mengandalkan pencatatan manual atau sistem antrean "first-come, first-served" yang tidak terukur.
 
 ### 1.2 Solusi & Tujuan
-**IF Barber** hadir sebagai platform web modern yang menjembatani pelanggan dan pengelola barbershop. Pelanggan dapat melihat profil barbershop, memilih barber favorit berdasarkan spesialisasi mereka, memilih layanan, dan melakukan booking jadwal secara online. Admin/Pemilik barbershop memiliki dashboard statistik terintegrasi untuk melacak performa bisnis harian, mengelola status antrean secara real-time, mengelola layanan (CRUD), dan mencetak struk transaksi/antrean.
+**IF Barber** hadir sebagai platform web modern yang menjembatani pelanggan dan pengelola barbershop. Pelanggan dapat melihat profil barbershop, memilih barber favorit berdasarkan spesialisasi mereka, memilih layanan, dan melakukan booking jadwal secara online. Sistem juga menyediakan fitur **Membership** di mana pelanggan berstatus member dapat login untuk mengumpulkan poin dan mendapatkan benefit khusus (pelanggan biasa tidak bisa login). Admin/Pemilik barbershop memiliki dashboard statistik terintegrasi untuk melacak performa bisnis harian, mengelola status antrean secara real-time, mengelola layanan (CRUD), dan mencetak struk transaksi/antrean.
 
 ---
 
@@ -117,6 +117,19 @@ Menyimpan data transaksi booking jadwal antrean.
 | `status` | ENUM | NOT NULL, DEFAULT 'waiting' | Status: `'waiting'` (antre), `'in_progress'` (sedang dicukur), `'completed'` (selesai), `'cancelled'` (dibatalkan) |
 | `created_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Waktu pendaftaran antrean |
 
+### 3.5 Tabel `members`
+Menyimpan data pelanggan eksklusif yang berstatus member. Member dapat login untuk melihat poin dan benefit. Pelanggan biasa tidak disimpan di sini dan tidak memiliki akses login.
+
+| Nama Kolom | Tipe Data | Atribut | Deskripsi |
+| :--- | :--- | :--- | :--- |
+| `id` | INT | PRIMARY KEY, AUTO_INCREMENT | ID unik Member |
+| `username` | VARCHAR(50) | UNIQUE, NOT NULL | Username login member |
+| `password` | VARCHAR(255) | NOT NULL | Hash password member |
+| `name` | VARCHAR(100) | NOT NULL | Nama lengkap member |
+| `phone` | VARCHAR(15) | NOT NULL | Nomor telepon member |
+| `points` | INT | DEFAULT 0 | Poin reward yang terkumpul |
+| `created_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Waktu registrasi member |
+
 ---
 
 ## 4. Persyaratan Fungsional (Functional Requirements)
@@ -185,6 +198,19 @@ Halaman ini adalah wajah barbershop yang dapat diakses oleh publik untuk memikat
 
 ---
 
+### 4.4 Modul 4: Fitur Membership
+
+*   **FR-4.1: Akses Login Eksklusif**
+    *   Pelanggan berstatus membership memiliki portal login khusus di web.
+    *   Pelanggan biasa (non-member) tidak memiliki akses login dan tetap menggunakan flow booking reguler (tanpa login).
+*   **FR-4.2: Sistem Poin & Benefit**
+    *   Setiap kali member menyelesaikan layanan, sistem akan otomatis menambahkan poin reward ke akun mereka.
+    *   Member memiliki dashboard profil untuk melihat jumlah poin saat ini, riwayat kedatangan, dan penawaran benefit/diskon khusus.
+*   **FR-4.3: Manajemen Member oleh Admin**
+    *   Admin dapat mendaftarkan pelanggan biasa menjadi member melalui dashboard admin.
+
+---
+
 ## 5. Persyaratan Non-Fungsional (Non-Functional Requirements)
 
 ### 5.1 Aspek Keamanan (Security)
@@ -220,6 +246,9 @@ gantt
     Integrasi Cetak Struk PDF            :des8, 2026-06-08, 2d
     Widget Chatbot & Proxy Gemini API   :des9, after des8, 3d
     Security Testing & Bug Fixing       :des10, after des9, 3d
+    section Fase 5: Sistem Membership
+    Database & Login Member              :des11, after des10, 2d
+    Sistem Poin & Profil Member          :des12, after des11, 3d
 ```
 
 ---

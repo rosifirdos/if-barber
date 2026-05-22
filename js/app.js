@@ -172,6 +172,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         }
+        const queueNowServing = document.getElementById('queueNowServing');
+        const queueWaitingList = document.getElementById('queueWaitingList');
+        if (queueNowServing && queueWaitingList) {
+            queueNowServing.innerHTML = '';
+            queueWaitingList.innerHTML = '';
+
+            const activeBookings = bookingsDb.filter(b => b.status === 'in_progress');
+            if (activeBookings.length > 0) {
+                const booking = activeBookings[0];
+                queueNowServing.innerHTML = `
+                    <div class="font-label-sm text-label-sm text-muted-gray mb-1 uppercase tracking-widest">Now Serving</div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-none">#${booking.queue}</div>
+                            <div class="font-label-md text-label-md text-on-surface mt-1">${booking.name}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-label-sm text-label-sm text-muted-gray">Barber</div>
+                            <div class="font-label-md text-label-md text-on-surface">${booking.barber}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                queueNowServing.innerHTML = `<div class="text-center py-4 text-muted-gray text-sm">Tidak ada antrean yang sedang berjalan.</div>`;
+            }
+
+            const waitingBookings = bookingsDb.filter(b => b.status === 'waiting');
+            if (waitingBookings.length > 0) {
+                waitingBookings.forEach((booking, index) => {
+                    const waitTime = index * 25 + 5; // roughly
+                    queueWaitingList.innerHTML += `
+                    <div class="flex items-center justify-between p-3 bg-surface-variant/20 rounded border border-white/5 hover:bg-surface-variant/40 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="font-headline-md text-headline-md text-on-surface-variant w-8">#${booking.queue}</div>
+                            <div>
+                                <div class="font-label-md text-label-md text-on-surface">${booking.name}</div>
+                                <div class="font-label-sm text-label-sm text-muted-gray">with ${booking.barber}</div>
+                            </div>
+                        </div>
+                        <span class="bg-status-waiting/10 text-status-waiting px-2 py-1 rounded text-xs font-medium">~${waitTime} mins</span>
+                    </div>
+                    `;
+                });
+            } else {
+                queueWaitingList.innerHTML = `<div class="text-center py-4 text-muted-gray text-sm">Semua antrean telah selesai.</div>`;
+            }
+        }
     }
 
     // Initial render of queue
@@ -470,5 +517,130 @@ document.addEventListener('DOMContentLoaded', () => {
             handleSendMessage();
         }
     });
+
+    // --- 6. Queue Page Logic ---
+    const submitBookingBtn = document.getElementById('submitBookingBtn');
+    if (submitBookingBtn) {
+        // Service Selection Styling Logic
+        const serviceRadios = document.querySelectorAll('input[name="service"]');
+        serviceRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('input[name="service"]').forEach(r => {
+                    const parent = r.closest('label');
+                    parent.classList.remove('border-primary', 'bg-primary/10');
+                    parent.classList.add('border-outline/30', 'bg-surface-variant/30');
+                });
+                if (radio.checked) {
+                    const parent = radio.closest('label');
+                    parent.classList.add('border-primary', 'bg-primary/10');
+                    parent.classList.remove('border-outline/30', 'bg-surface-variant/30');
+                }
+            });
+        });
+
+        // Barber Selection Styling Logic
+        const barberRadios = document.querySelectorAll('input[name="barber"]');
+        barberRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('input[name="barber"]').forEach(r => {
+                    const parent = r.closest('label');
+                    parent.classList.remove('border-primary', 'bg-primary/10');
+                    parent.classList.add('border-outline/30', 'bg-surface-variant/30', 'opacity-60');
+                    const imgBorder = parent.querySelector('.rounded-full');
+                    if(imgBorder) imgBorder.classList.remove('border-primary');
+                    if(imgBorder) imgBorder.classList.add('border-transparent');
+                    const img = parent.querySelector('img');
+                    if(img) img.classList.add('grayscale');
+                });
+                if (radio.checked) {
+                    const parent = radio.closest('label');
+                    parent.classList.add('border-primary', 'bg-primary/10');
+                    parent.classList.remove('border-outline/30', 'bg-surface-variant/30', 'opacity-60');
+                    const imgBorder = parent.querySelector('.rounded-full');
+                    if(imgBorder) imgBorder.classList.add('border-primary');
+                    if(imgBorder) imgBorder.classList.remove('border-transparent');
+                    const img = parent.querySelector('img');
+                    if(img) img.classList.remove('grayscale');
+                }
+            });
+        });
+
+        // Time selection logic
+        const timeBtns = document.querySelectorAll('.time-btn');
+        let selectedTime = '11:00';
+        timeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeBtns.forEach(b => {
+                    b.classList.remove('border-primary', 'bg-primary/20', 'text-primary');
+                    b.classList.add('border-outline/30', 'text-on-surface', 'bg-surface-variant/30');
+                });
+                btn.classList.add('border-primary', 'bg-primary/20', 'text-primary');
+                btn.classList.remove('border-outline/30', 'text-on-surface', 'bg-surface-variant/30');
+                selectedTime = btn.getAttribute('data-time');
+            });
+        });
+
+        submitBookingBtn.addEventListener('click', () => {
+            const name = document.getElementById('bName').value;
+            const phone = document.getElementById('bPhone').value;
+            const serviceEl = document.querySelector('input[name="service"]:checked');
+            const barberEl = document.querySelector('input[name="barber"]:checked');
+            
+            if (!name || !phone || !serviceEl || !barberEl) {
+                alert('Silakan lengkapi data booking Anda.');
+                return;
+            }
+
+            const serviceName = serviceEl.value;
+            const barberName = barberEl.value;
+            
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const date = `${year}-${month}-${day}`;
+
+            const randomStr = Math.random().toString(36).substring(2, 6).toUpperCase();
+            const bookingCode = `BFK-${randomStr}`;
+            
+            const queuesToday = bookingsDb.map(b => b.queue);
+            const nextQueueNum = queuesToday.length > 0 ? Math.max(...queuesToday) + 1 : 1;
+
+            const newBooking = {
+                code: bookingCode,
+                name: name,
+                phone: phone,
+                service: serviceName,
+                barber: barberName,
+                date: date,
+                time: selectedTime,
+                queue: nextQueueNum,
+                status: 'waiting'
+            };
+
+            bookingsDb.push(newBooking);
+            saveBookings();
+            
+            alert(`Booking Berhasil!\nKode: ${bookingCode}\nNomor Antrean: #${nextQueueNum}`);
+            
+            // Reset
+            document.getElementById('bName').value = '';
+            document.getElementById('bPhone').value = '';
+        });
+    }
+
+    const searchBookingBtn = document.getElementById('searchBookingBtn');
+    if (searchBookingBtn) {
+        searchBookingBtn.addEventListener('click', () => {
+            const code = document.getElementById('searchCodeInput').value.trim().toUpperCase();
+            if (!code) return;
+            const found = bookingsDb.find(b => b.code === code);
+            if (found) {
+                alert(`Booking Ditemukan:\nNama: ${found.name}\nStatus: ${found.status}\nAntrean: #${found.queue}`);
+            } else {
+                alert('Kode booking tidak ditemukan.');
+            }
+        });
+    }
 
 });
